@@ -1,0 +1,2 @@
+Pour convertir le TypeScript en JavaScript continuellement on doit rouler build-watch.
+Pour rouler le code et rédemarrer automatiquement quand il y a des changements on doit utiliser debug.

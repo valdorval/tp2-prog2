@@ -1,0 +1,7 @@
+const applicationName = 'node-archetype';
+
+export const config = {
+    applicationName: applicationName,
+    listeningDomain: 'localhost',
+    listeningPort: 1280,
+};
