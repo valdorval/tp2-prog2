@@ -1,10 +1,11 @@
 import { Router } from 'express';
 import { ActivityModel } from '../model/activitymodel';
 import { wrap } from '../util';
+import { participantRouter } from './participantrouter';
 
 const activityRouter = Router();
 
-const activityMap = new Map<number, ActivityModel>();
+export const activityMap = new Map<number, ActivityModel>();
 
 activityMap.set(1, { name: 'Lancé de patates en équipe de 3', activityId: 1, date: new Date });
 activityMap.set(2, { name: 'Épluchette de blé d\'inde en forêt', activityId: 2, date: new Date });
@@ -13,7 +14,7 @@ activityMap.set(3, { name: 'Randonnée en montagne pied nu', activityId: 3, date
 let nextActivityId = 4;
 
 activityRouter.use('/:activityId', wrap(async (req, res, next) => {
-    const activity = activityMap.get(parseInt(req.params.eventId));
+    const activity = activityMap.get(parseInt(req.params.activityId));
     if (activity === undefined) { return res.sendStatus(404); }
     req.activity = activity;
     return next();
@@ -47,5 +48,7 @@ activityRouter.delete('/:activityId', wrap(async (req, res) => {
     activityMap.delete(req.activity.activityId);
     return res.sendStatus(204);
 }));
+
+activityRouter.use('/:activityId/participant', participantRouter);
 
 export { activityRouter };

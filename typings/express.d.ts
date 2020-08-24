@@ -1,9 +1,18 @@
-import { EventModel } from '../src/model/eventmodel';
+import { ActivityModel } from '../src/model/activitymodel';
+import { ParticipantEventModel } from '../src/model/participanteventmodel';
 
 declare global {
      module Express {
           interface Request {
-               event: EventModel;
+               activity: ActivityModel;
+          }
+     }
+}
+
+declare global {
+     module Express {
+          interface Request {
+               participant: ParticipantEventModel;
           }
      }
 }

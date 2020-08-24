@@ -1,4 +1,4 @@
 export class ParticipantModel {
-     public participant: string[];
+     public name: string;
      public participantId: number;
 }
