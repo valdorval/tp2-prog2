@@ -1,7 +1,8 @@
 import bodyParser from 'body-parser';
 import errorHandler from 'errorhandler';
 import express from 'express';
-import { eventRouter } from './router/eventrouter';
+import { activityRouter } from './router/activityrouter';
+import { participantRouter } from './router/participantrouter';
 
 const app = express();
 
@@ -18,6 +19,7 @@ app.use((_req, res, next) => {
     next();
 });
 
-app.use('/activity', eventRouter);
+app.use('/activity', activityRouter);
+app.use('/participant', participantRouter);
 
 export { app };
